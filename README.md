@@ -64,3 +64,12 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+### Traceback of commands
+1. Sending some wei to my address in the default keystore (from the anvil's default account):
+`cast send 0x09a6e8987Ca4824F557EED4Bfb48C7560912bd5F --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --value 999999999999999`
+
+2. The contracts created on anvil at the address 0xEf20890878a349f8ff1158247569b8593d3acb46.
+It should repeatedly use the same address in deterministic manner, right?
+
+3. I am building a transaction but not sending it yet: `cast mktx $COUNTER_ADDR "setNumber(uint256)" 88`
+
