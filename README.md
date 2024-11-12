@@ -73,3 +73,8 @@ It should repeatedly use the same address in deterministic manner, right?
 
 3. I am building a transaction but not sending it yet: `cast mktx $COUNTER_ADDR "setNumber(uint256)" 88`
 
+## Progress
+[x] Look, how to deploy the existing conracts onto the Sepolia
+[] I've deployed the fund me contract on sepolia. I now need to modify the fundMe contract with a different price feed (Pyth) and then have a function to get the price or update
+the price. And then redeploy!
+
