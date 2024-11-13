@@ -38,7 +38,7 @@ pour-1eth:
 	cast send 0x09a6e8987Ca4824F557EED4Bfb48C7560912bd5F --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80 --value 1ether
 
 my-balance:
-	cast wallet address | xargs cast balance --ether
+	cast wallet address | xargs cast balance --rpc-url $(SEPOLIA_RPC_URL) --ether
 
 deploy:
 	@forge script script/DeployFundMe.s.sol:DeployFundMe $(NETWORK_ARGS)
@@ -48,6 +48,9 @@ NETWORK_ARGS := --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KE
 ifeq ($(findstring --network sepolia,$(ARGS)),--network sepolia)
 	NETWORK_ARGS := --rpc-url $(SEPOLIA_RPC_URL) --account $(ACCOUNT) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
 endif
+
+deploy-pyth-on-sepolia:
+	forge create src/MyFirstPythContract.sol:MyFirstPythContract --rpc-url $(SEPOLIA_RPC_URL) --constructor-args $(SEPOLIA_PYTH_PRICE_FEED) $(PYTH_ETH_USD_PRICE_FEED_ID)
 
 deploy-sep:
 	forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url $(SEPOLIA_RPC_URL) --broadcast
