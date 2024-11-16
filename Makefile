@@ -52,6 +52,9 @@ endif
 deploy-pyth-on-sepolia:
 	forge create src/MyFirstPythContract.sol:MyFirstPythContract --rpc-url $(SEPOLIA_RPC_URL) --constructor-args $(SEPOLIA_PYTH_PRICE_FEED) $(PYTH_ETH_USD_PRICE_FEED_ID)
 
+deploy-pyth-price-feed:
+	forge create src/PythPriceFeed.sol:SomeContract --rpc-url $(SEPOLIA_RPC_URL) --constructor-args $(SEPOLIA_PYTH_PRICE_FEED)
+
 deploy-sep:
 	forge script script/DeployFundMe.s.sol:DeployFundMe --rpc-url $(SEPOLIA_RPC_URL) --broadcast
 
